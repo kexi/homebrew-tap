@@ -1,30 +1,29 @@
 class VibeBeta < Formula
   desc "Git worktree helper CLI (beta channel)"
   homepage "https://github.com/kexi/vibe"
-  version "0.17.0-beta.6"
+  version "0.17.0-beta.7"
   license "MIT"
 
-  conflicts_with "vibe", because: "both install the same binary"
 
   on_macos do
     on_arm do
-      url "https://github.com/kexi/vibe/releases/download/v0.17.0-beta.6/vibe-darwin-arm64"
-      sha256 "7e10e0d9fe8f63354933809b8050d07035a5c0be7853916a68b7c0575a710281"
+      url "https://github.com/kexi/vibe/releases/download/v0.17.0-beta.7/vibe-darwin-arm64"
+      sha256 "7b9b55ddc2f974f7feb4f44045ee94935bbb08f3fcffbac77ee1d3da7bf449b7"
     end
     on_intel do
-      url "https://github.com/kexi/vibe/releases/download/v0.17.0-beta.6/vibe-darwin-x64"
-      sha256 "69cbd1b4836aedd44a6f481fce7018d7ab2f9217825e148d1b571efc142aad5c"
+      url "https://github.com/kexi/vibe/releases/download/v0.17.0-beta.7/vibe-darwin-x64"
+      sha256 "9faaa029fde4f2f06bf4600bd66643a42abb335bf6b744f7c2a2f66b380c4451"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/kexi/vibe/releases/download/v0.17.0-beta.6/vibe-linux-arm64"
-      sha256 "22f762b23636c79ec32d11355b56efc6e3043a654642bf251ec6568603c78d11"
+      url "https://github.com/kexi/vibe/releases/download/v0.17.0-beta.7/vibe-linux-arm64"
+      sha256 "984b34db39959c803c66fc91e1d5a89c34ecb1e83e0aac07f6bcc6e7813e51b6"
     end
     on_intel do
-      url "https://github.com/kexi/vibe/releases/download/v0.17.0-beta.6/vibe-linux-x64"
-      sha256 "84ce8d876af8b2b5d2c3cf920290a370ad268d1c80c8aa456a73f1fe3658a971"
+      url "https://github.com/kexi/vibe/releases/download/v0.17.0-beta.7/vibe-linux-x64"
+      sha256 "d0275f1cb77c90e83df41440db3b73eb1cf4ff548a45a84e5f77e3c0a7cbfda1"
     end
   end
 
@@ -34,7 +33,7 @@ class VibeBeta < Formula
     binary_name = "vibe-linux-arm64" if OS.linux? && Hardware::CPU.arm?
     binary_name = "vibe-linux-x64" if OS.linux? && Hardware::CPU.intel?
 
-    bin.install binary_name => "vibe"
+    bin.install binary_name => "vibe-beta"
   end
 
   def caveats
@@ -44,11 +43,11 @@ class VibeBeta < Formula
         brew install kexi/tap/vibe
 
       Add this to your .zshrc:
-        vibe() { eval "$(command vibe "$@")" }
+        vibe-beta() { eval "$(command vibe-beta "$@")" }
     EOS
   end
 
   test do
-    system "#{bin}/vibe", "--help"
+    system "#{bin}/vibe-beta", "--help"
   end
 end
