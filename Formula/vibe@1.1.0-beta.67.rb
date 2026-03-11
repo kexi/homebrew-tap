@@ -1,9 +1,9 @@
-class VibeBeta < Formula
-  desc "Git worktree helper CLI (beta channel)"
+class VibeAT110Beta67 < Formula
+  desc "Git worktree helper CLI (versioned)"
   homepage "https://github.com/kexi/vibe"
   version "1.1.0-beta.67"
   license "MIT"
-
+  keg_only :versioned_formula
 
   on_macos do
     on_arm do
@@ -28,26 +28,22 @@ class VibeBeta < Formula
   end
 
   def install
-    binary_name = "vibe-darwin-arm64" if OS.mac? && Hardware::CPU.arm?
-    binary_name = "vibe-darwin-x64" if OS.mac? && Hardware::CPU.intel?
-    binary_name = "vibe-linux-arm64" if OS.linux? && Hardware::CPU.arm?
-    binary_name = "vibe-linux-x64" if OS.linux? && Hardware::CPU.intel?
+    binary_name = if OS.mac? && Hardware::CPU.arm?
+      "vibe-darwin-arm64"
+    elsif OS.mac? && Hardware::CPU.intel?
+      "vibe-darwin-x64"
+    elsif OS.linux? && Hardware::CPU.arm?
+      "vibe-linux-arm64"
+    elsif OS.linux? && Hardware::CPU.intel?
+      "vibe-linux-x64"
+    else
+      odie "Unsupported platform"
+    end
 
-    bin.install binary_name => "vibe-beta"
-  end
-
-  def caveats
-    <<~EOS
-      ⚠️  This is a BETA version installed from the develop branch.
-      It may contain unstable features. For the stable release, use:
-        brew install kexi/tap/vibe
-
-      Add this to your .zshrc:
-        vibe-beta() { eval "$(command vibe-beta "$@")" }
-    EOS
+    bin.install binary_name => "vibe"
   end
 
   test do
-    system "#{bin}/vibe-beta", "--help"
+    system "#{bin}/vibe", "--help"
   end
 end
