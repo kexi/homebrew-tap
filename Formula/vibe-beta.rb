@@ -1,29 +1,29 @@
 class VibeBeta < Formula
   desc "Git worktree helper CLI (beta channel)"
   homepage "https://github.com/kexi/vibe"
-  version "1.1.1-beta.81"
+  version "1.1.1-beta.82"
   license "MIT"
 
 
   on_macos do
     on_arm do
-      url "https://github.com/kexi/vibe/releases/download/v1.1.1-beta.81/vibe-darwin-arm64"
-      sha256 "44dccd8e64743322c73dbc230781531f083eca9257cc3e72fa747bad9002a0e3"
+      url "https://github.com/kexi/vibe/releases/download/v1.1.1-beta.82/vibe-darwin-arm64"
+      sha256 "a56be74cf26155fe1de894434e353a94548318fb9a9fb18ff6490f21f63e993f"
     end
     on_intel do
-      url "https://github.com/kexi/vibe/releases/download/v1.1.1-beta.81/vibe-darwin-x64"
-      sha256 "81f70065cf1d9438cc667d8f56581831422072a89f111ee4d6930e7f4ed4c127"
+      url "https://github.com/kexi/vibe/releases/download/v1.1.1-beta.82/vibe-darwin-x64"
+      sha256 "8ce7758e6fc14e631101d32e95c18e21db68d1c69e42c26a9cced143c3412fc1"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/kexi/vibe/releases/download/v1.1.1-beta.81/vibe-linux-arm64"
-      sha256 "72c199be1a6a5e3c4d8fca09f9621e5f599fe395300345106bc9e1527c436a8a"
+      url "https://github.com/kexi/vibe/releases/download/v1.1.1-beta.82/vibe-linux-arm64"
+      sha256 "df7a56e6756782336111d0f57a70d595938c8be9cbf6ef1e6e8f32d3989a4b8f"
     end
     on_intel do
-      url "https://github.com/kexi/vibe/releases/download/v1.1.1-beta.81/vibe-linux-x64"
-      sha256 "21c28a1312d62862f6f8bef5c79cbe717d295e04aad745de7cde7a8c608d33e2"
+      url "https://github.com/kexi/vibe/releases/download/v1.1.1-beta.82/vibe-linux-x64"
+      sha256 "06a04db7ec206c1b2265dba784a58028157320896e4395d34d9f4dc7f1fd5471"
     end
   end
 
