@@ -1,8 +1,9 @@
-class Vibe < Formula
-  desc "Git worktree helper CLI"
+class VibeAT130 < Formula
+  desc "Git worktree helper CLI (versioned)"
   homepage "https://github.com/kexi/vibe"
   version "1.3.0"
   license "MIT"
+  keg_only :versioned_formula
 
   on_macos do
     on_arm do
@@ -27,19 +28,19 @@ class Vibe < Formula
   end
 
   def install
-    binary_name = "vibe-darwin-arm64" if OS.mac? && Hardware::CPU.arm?
-    binary_name = "vibe-darwin-x64" if OS.mac? && Hardware::CPU.intel?
-    binary_name = "vibe-linux-arm64" if OS.linux? && Hardware::CPU.arm?
-    binary_name = "vibe-linux-x64" if OS.linux? && Hardware::CPU.intel?
+    binary_name = if OS.mac? && Hardware::CPU.arm?
+      "vibe-darwin-arm64"
+    elsif OS.mac? && Hardware::CPU.intel?
+      "vibe-darwin-x64"
+    elsif OS.linux? && Hardware::CPU.arm?
+      "vibe-linux-arm64"
+    elsif OS.linux? && Hardware::CPU.intel?
+      "vibe-linux-x64"
+    else
+      odie "Unsupported platform"
+    end
 
     bin.install binary_name => "vibe"
-  end
-
-  def caveats
-    <<~EOS
-      Add this to your .zshrc:
-        vibe() { eval "$(command vibe "$@")" }
-    EOS
   end
 
   test do
