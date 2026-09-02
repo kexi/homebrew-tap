@@ -1,8 +1,9 @@
-class Vibe < Formula
-  desc "Git worktree helper CLI"
+class VibeAT410 < Formula
+  desc "Git worktree helper CLI (versioned)"
   homepage "https://github.com/kexi/vibe"
   version "4.1.0"
   license "MIT"
+  keg_only :versioned_formula
 
   on_macos do
     on_arm do
@@ -40,13 +41,6 @@ class Vibe < Formula
     end
 
     bin.install binary_name => "vibe"
-  end
-
-  def caveats
-    <<~EOS
-      Add this to your .zshrc:
-        vibe() { eval "$(command vibe "$@")" }
-    EOS
   end
 
   test do
